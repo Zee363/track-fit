@@ -4,6 +4,7 @@ const exerciseController = require('../Controllers/exerciseController');
 
 // Routes for GET requests
 router.get('/exercises', exerciseController.getAllExercises);
+router.get('/exercises/new-exercises', exerciseController.getAllNewExercises);
 router.get('/category/:category', exerciseController.getExercisesByCategory);
 
 // Routes for POST requests
