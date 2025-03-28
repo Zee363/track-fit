@@ -65,12 +65,12 @@ useEffect(() => {
 
         setNewExercises((prevNewExercises) => [
           ...prevNewExercises,
-          exerciseData, // Ensure the new exercise is added
+          exerciseData, 
         ]);
       }
 
 
-      // Reset form
+     
       setExerciseData({ category: "", name: "", sets: 0, reps: 0, duration: "", rest: "" });
       setIsEditing(false);
       setExerciseId(null);
@@ -83,7 +83,7 @@ const handleDelete = async (id) => {
   console.log('Deleting exercise with ID:', id);  
   if (!id) {
     console.error("Exercise ID is undefined or invalid!");
-    return; // Exit early if ID is invalid
+    return; 
   }
   try {
     const response = await axios.delete(`http://localhost:5001/api/exercises/${id}`);
