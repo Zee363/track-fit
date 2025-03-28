@@ -1,0 +1,105 @@
+h2 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.exercise-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .exercise-block img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .exercise-block:hover {
+    background-color: #589292;
+    color: white;
+  }
+
+  form {
+    margin-bottom:  30px;
+  }
+
+  .log-workout {
+    background-color: #f4f4f9;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling the labels */
+  label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Styling the select and input elements */
+  select,
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Adding some hover and focus effects */
+  select:focus,
+  input:focus {
+    border-color: #6c63ff;
+    outline: none;
+  }
+  
+  /* Styling the submit button */
+  button {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #574bff;
+  }
+  
+  /* Optional: Add a success message box if needed */
+  .success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }

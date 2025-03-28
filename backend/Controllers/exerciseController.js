@@ -1,4 +1,5 @@
 const Exercise = require('../models/Exercise');
+const Log = require('../models/Log');
 const mongoose = require("mongoose");
 
 
@@ -114,7 +115,7 @@ try {
 exports.addExercise = async (req, res) => {
         try {
             console.log(req.body);
-            const { name, sets, reps, duration, rest, category } = req.body;
+            const { category, name, sets, reps, duration, rest } = req.body;
     
             // Checking for required fields
             if (!name || !sets || !category) {
@@ -124,12 +125,12 @@ exports.addExercise = async (req, res) => {
     
             // Creating the new exercise
             const newExercise = new Exercise({
+                category, 
                 name,
                 sets,
                 reps,
                 duration,
-                rest,
-                category  
+                rest,  
             });
     
             // Saving the exercise to the database
@@ -142,11 +143,41 @@ exports.addExercise = async (req, res) => {
             res.status(500).json({ message: "Error adding exercise", error: error.message });
         }
     };    
-   
+
+    
+    exports.addLog = async (req, res) => {
+        try {
+            console.log(req.body);
+            const { exercise, sets, reps } = req.body;
+    
+            // Checking for required fields
+            if ( !exercise || !sets || !reps) {
+                return res.status(400).json({ message: "Required fields are missing or invalid" });
+            }
+    
+    
+            // Creating the new exercise
+            const logExercise = new Log({
+                exercise,
+                sets, 
+                reps
+            });
+    
+            // Saving the exercise to the database
+            const savedLog = await logExercise.save();
+    
+            // Return success response
+            res.status(201).json({ message: "Exercise loged successfully", logExercise: savedLog});
+        } catch (error) {
+            console.error("Error logging exercise", error);
+            res.status(500).json({ message: "Error logging exercise", error: error.message });
+        }
+    }; 
 
 // Controller for updating data  using IDs
 exports.updateExercise = async (req, res) => {
         const { id } = req.params;
+        const { category, name, sets, reps, duration, rest } = req.body;
 
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({ message: "Invalid Exercise ID" });
@@ -154,7 +185,7 @@ exports.updateExercise = async (req, res) => {
         
         try {
         // Find exercise by ID and update it with the provided data
-        const updatedExercise = await Exercise.findByIdAndUpdate(id, req.body, {
+        const updatedExercise = await Exercise.findByIdAndUpdate(id, { category, name, sets, reps, duration, rest }, req.body, {
             new: true,
         });
 

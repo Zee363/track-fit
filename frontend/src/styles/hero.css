@@ -1,0 +1,72 @@
+/* Full-width background for hero section */
+.hero-section {
+    background: url('https://hips.hearstapps.com/hmg-prod/images/gym-workout-66d087d56ef90.jpg?crop=0.628xw:1.00xh;0.100xw,0&resize=1200:')
+      no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    color: white;
+  }
+  
+  /* Overlay for the hero section */
+  .hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
+    z-index: 1;
+  }
+  
+  .hero-section .container {
+    z-index: 2; /* Ensures text is above the overlay */
+  }
+  
+
+  .navbar {
+    background-color: transparent;
+    transition: background-color 0.5s ease;
+    position: absolute;  /* Position the navbar relative to the first positioned ancestor */
+    top: 0;
+    left: 0;
+    width: 100%;  /* Ensures the navbar takes full width */
+    z-index: 10;  /* Keeps it above the image */
+  }
+  
+  
+  .navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background on scroll */
+  }
+  
+  .navbar-nav .nav-link {
+    color: white;
+    padding: 15px;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #ff5733;
+  }
+  
+  /* Button styling */
+  .home-button {
+    background-color: #ff5733;
+    border-color: #ff5733;
+    width: 25%;
+  }
+  
+  .home-button:hover {
+    background-color: #ff6a4d;
+    border-color: #ff6a4d;
+  }
+  
+  /* Hero section headline */
+  .display-3 {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+  
+  .lead {
+    font-size: 1.25rem;
+  }
+  
