@@ -219,4 +219,23 @@ exports.deleteExerciseById = async (req, res) => {
     }
 };
 
+// Controller to fetch all exercises
+exports.getAllNewExercises = async (req, res) => {
+  try {
+    // Fetch all exercises from the database
+    const exercises = await Exercise.find(); 
+
+    // If no exercises found
+    if (exercises.length === 0) {
+      return res.status(404).json({ message: 'No exercises found' });
+    }
+
+    // Return the list of exercises
+    res.status(200).json(exercises);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error', error: error.message });
+  }
+};
+
 
