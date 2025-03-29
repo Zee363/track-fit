@@ -2,8 +2,8 @@ import React from "react";
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import HeroSection from "./components/Hero";
 import Header from "./components/Header";
-import WorkoutPage from "./pages/Workout";
-import Exercise from "./pages/Exercise";
+import ExercisesPage from "./pages/Exercises";
+import Workout from "./pages/Workout";
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <Header/>
       <Routes>
         <Route path="/" element={<HeroSection />}></Route>
-        <Route path="/workout" element={<WorkoutPage />}></Route>
-        <Route path="/exercise" element={<Exercise />}></Route>
+        <Route path="/exercises" element={<ExercisesPage />}></Route>
+        <Route path="/workout" element={<Workout />}></Route>
       </Routes>
       </BrowserRouter>
     </div>
