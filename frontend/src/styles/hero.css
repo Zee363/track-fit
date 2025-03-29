@@ -1,69 +1,68 @@
-/* Full-width background for hero section */
-.hero-section {
+body {
     background: url('https://hips.hearstapps.com/hmg-prod/images/gym-workout-66d087d56ef90.jpg?crop=0.628xw:1.00xh;0.100xw,0&resize=1200:')
-      no-repeat center center;
-    background-size: cover;
-    height: 100vh;
-    position: relative;
-    color: white;
+      no-repeat center center !important;
+    background-size: cover !important;
+    height: 100vh !important;
+    position: relative !important;
+    color: white !important;
   }
   
-  /* Overlay for the hero section */
+  
   .hero-section .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
-    z-index: 1;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.5) !important; 
+    z-index: 1 !important;
   }
   
   .hero-section .container {
-    z-index: 2; /* Ensures text is above the overlay */
+    z-index: 2 !important;
   }
   
 
   .navbar {
     background-color: transparent;
-    transition: background-color 0.5s ease;
-    position: absolute;  /* Position the navbar relative to the first positioned ancestor */
-    top: 0;
-    left: 0;
-    width: 100%;  /* Ensures the navbar takes full width */
-    z-index: 10;  /* Keeps it above the image */
+    transition: background-color 0.5s ease !important;
+    position: absolute !important; 
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important; 
+    z-index: 10 !important; 
   }
   
   
   .navbar.scrolled {
-    background-color: rgba(0, 0, 0, 0.8); /* Dark background on scroll */
+    background-color: rgba(0, 0, 0, 0.8) !important; 
   }
   
   .navbar-nav .nav-link {
-    color: white;
-    padding: 15px;
+    color: white !important;
+    padding: 15px !important;
   }
   
   .navbar-nav .nav-link:hover {
-    color: #ff5733;
+    color : #ff5733 !important;
   }
   
-  /* Button styling */
+ 
   .home-button {
-    background-color: #ff5733;
-    border-color: #ff5733;
-    width: 25%;
+    background-color: #ff5733 !important;
+    border-color: #ff5733!important;
+    width: 25% !important;
   }
   
   .home-button:hover {
-    background-color: #ff6a4d;
-    border-color: #ff6a4d;
+    background-color: #ff6a4d !important;
+    border-color: #ff6a4d !important;
   }
   
-  /* Hero section headline */
+  
   .display-3 {
-    font-size: 4rem;
-    font-weight: bold;
+    font-size: 4rem !important;
+    font-weight: bold !important;
   }
   
   .lead {
