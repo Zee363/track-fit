@@ -1,65 +1,20 @@
 const Exercise = require('../models/Exercise');
-const Log = require('../models/Log');
+const Workout = require('../models/Workout');
 const mongoose = require("mongoose");
 
 
 // Controller for inserting the initial ata into the database
 exports.addAllExercises = async (req, res) => {
-    const exercises = {
-        "fullBody": [
-            { "name": "Burpees", "sets": 3, "reps": 10, "duration": "1 minute" },
-            { "name": "Mountain Climbers", "sets": 3, "reps": 20, "duration": "1 minute" },
-            { "name": "Squats", "sets": 4, "reps": 10, "rest": "60 seconds" },
-            { "name": "Push-Ups", "sets": 3, "reps": 15, "rest": "60 seconds" }
-        ],
-        "upperBody": [
-            { "name": "Push-Ups", "sets": 3, "reps": 15, "rest": "60 seconds" },
-            { "name": "Bench Press", "sets": 4, "reps": 10, "rest": "90 seconds" },
-            { "name": "Chest Fly", "sets": 3, "reps": 12, "rest": "60 seconds" },
-            { "name": "Overhead Shoulder Press", "sets": 3, "reps": 10, "rest": "60 seconds" },
-            { "name": "Lateral Raise", "sets": 3, "reps": 12, "rest": "60 seconds" },
-            { "name": "Bicep Curls", "sets": 3, "reps": 12, "rest": "60 seconds" },
-            { "name": "Tricep Dips", "sets": 3, "reps": 12, "rest": "60 seconds" }
-        ],
-        "lowerBody": [
-            { "name": "Squats", "sets": 4, "reps": 10, "rest": "60 seconds" },
-            { "name": "Lunges", "sets": 3, "reps": 12, "rest": "60 seconds" },
-            { "name": "Leg Press", "sets": 3, "reps": 10, "rest": "60 seconds" },
-            { "name": "Deadlifts", "sets": 3, "reps": 8, "rest": "90 seconds" },
-            { "name": "Bent-Over Row", "sets": 3, "reps": 12, "rest": "60 seconds" }
-        ],
-        "back": [
-            { "name": "Deadlifts", "sets": 3, "reps": 8, "rest": "90 seconds" },
-            { "name": "Bent-Over Rows", "sets": 3, "reps": 12, "rest": "60 seconds" },
-            { "name": "Lat Pulldown", "sets": 3, "reps": 10, "rest": "60 seconds" }
-        ],
-        
-        "cardio": [
-            { "name": "Burpees", "sets": 3, "reps": 10, "duration": "1 minute" },
-            { "name": "Jump Rope", "sets": 3, "reps": 60, "duration": "1 minute" },
-            { "name": "Mountain Climbers", "sets": 3, "reps": 20, "duration": "1 minute" }
-        ],
-        "core": [
-            { "name": "Planks", "sets": 3, "duration": "30-60 seconds", "rest": "30 seconds" },
-            { "name": "Russian Twists", "sets": 3, "reps": 20, "rest": "30 seconds" },
-            { "name": "Leg Raises", "sets": 3, "reps": 12, "rest": "30 seconds" }
-        ]
-    };
+    const exercises = [
+        { "name": "Burpees", "sets": 3, "reps": 10, "duration": "1 minute" },
+        { "name": "Mountain Climbers", "sets": 3, "reps": 20, "duration": "1 minute" },
+        { "name": "Squats", "sets": 4, "reps": 10, "rest": "60 seconds" },
+        { "name": "Push-Ups", "sets": 3, "reps": 15, "rest": "60 seconds" }
+    ];
 
     try {
-        // Array of all exercises with their category
-        const allExercises = [];
-        for (const category in exercises) {
-            exercises[category].forEach(exercise => {
-                allExercises.push({
-                    ...exercise,
-                    category // Add the category to the exercise object
-                });
-            });
-        }
-
         // Insert all exercises at once using insertMany
-        const result = await Exercise.insertMany(allExercises);
+        const result = await Exercise.insertMany(exercises);
 
         res.status(201).json({ message: "Exercises added successfully", exercises: result });
     } catch (error) {
@@ -67,6 +22,7 @@ exports.addAllExercises = async (req, res) => {
         res.status(500).json({ message: "Error adding exercises", error: error.message });
     }
 };
+
 
 
 // Controllers for fetching the data
@@ -97,7 +53,7 @@ exports.getExercisesByCategory = async (req, res) => {
 try {
     const { category } = req.params;
 
-    const exercises = await Exercise.find({ category });
+    const exercises = await Workout.find({ category });
 
     if (!exercises || exercises.length === 0) {
         return res.status(404).json({ message: `No exercises found for category: ${category}.` });
@@ -115,17 +71,16 @@ try {
 exports.addExercise = async (req, res) => {
         try {
             console.log(req.body);
-            const { category, name, sets, reps, duration, rest } = req.body;
+            const { name, sets, reps, duration, rest } = req.body;
     
             // Checking for required fields
-            if (!name || !sets || !category) {
+            if (!name || !sets ) {
                 return res.status(400).json({ message: "Required fields are missing or invalid" });
             }
     
     
             // Creating the new exercise
-            const newExercise = new Exercise({
-                category, 
+            const newExercise = new Workout({ 
                 name,
                 sets,
                 reps,
@@ -143,41 +98,12 @@ exports.addExercise = async (req, res) => {
             res.status(500).json({ message: "Error adding exercise", error: error.message });
         }
     };    
-
-    
-    exports.addLog = async (req, res) => {
-        try {
-            console.log(req.body);
-            const { exercise, sets, reps } = req.body;
-    
-            // Checking for required fields
-            if ( !exercise || !sets || !reps) {
-                return res.status(400).json({ message: "Required fields are missing or invalid" });
-            }
-    
-    
-            // Creating the new exercise
-            const logExercise = new Log({
-                exercise,
-                sets, 
-                reps
-            });
-    
-            // Saving the exercise to the database
-            const savedLog = await logExercise.save();
-    
-            // Return success response
-            res.status(201).json({ message: "Exercise loged successfully", logExercise: savedLog});
-        } catch (error) {
-            console.error("Error logging exercise", error);
-            res.status(500).json({ message: "Error logging exercise", error: error.message });
-        }
-    }; 
+ 
 
 // Controller for updating data  using IDs
 exports.updateExercise = async (req, res) => {
         const { id } = req.params;
-        const { category, name, sets, reps, duration, rest } = req.body;
+        const { name, sets, reps, duration, rest } = req.body;
 
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({ message: "Invalid Exercise ID" });
@@ -185,7 +111,7 @@ exports.updateExercise = async (req, res) => {
         
         try {
         // Find exercise by ID and update it with the provided data
-        const updatedExercise = await Exercise.findByIdAndUpdate(id, { category, name, sets, reps, duration, rest }, req.body, {
+        const updatedExercise = await Workout.findByIdAndUpdate(id, { name, sets, reps, duration, rest }, req.body, {
             new: true,
         });
 
@@ -207,7 +133,7 @@ exports.deleteExerciseById = async (req, res) => {
         const { id } = req.params;
 
         // Find and delete the exercise by ID
-        const deletedExercise = await Exercise.findByIdAndDelete(id);
+        const deletedExercise = await Workout.findByIdAndDelete(id);
 
         if (!deletedExercise) {
             return res.status(404).json({ message: `Exercise with ID ${id} not found.` });
@@ -223,7 +149,7 @@ exports.deleteExerciseById = async (req, res) => {
 exports.getAllNewExercises = async (req, res) => {
   try {
     // Fetch all exercises from the database
-    const exercises = await Exercise.find(); 
+    const exercises = await Workout.find(); 
 
     // If no exercises found
     if (exercises.length === 0) {
