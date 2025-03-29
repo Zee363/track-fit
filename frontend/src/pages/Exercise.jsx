@@ -19,7 +19,7 @@ const Exercise = () => {
 
   const fetchExercises = async () => {
     try {
-      const response = await axios.get("http://localhost:5001/api/new-exercises");
+      const response = await axios.get(`${process.env.BACKEND_URL}api/new-exercises`);
       
       const fetchedExercises = response.data;
 
@@ -49,7 +49,7 @@ useEffect(() => {
     try {
         if (isEditing && exerciseId) {
           // If editing, send PUT request
-          const response= await axios.put(`http://localhost:5001/api/exercises/${exerciseId}`, exerciseData);
+          const response= await axios.put(`${process.env.BACKEND_URL}api/exercises/${exerciseId}`, exerciseData);
           console.log("Exercise updated successfully", response.data);
 
           setNewExercises((prevExercises) =>
@@ -59,7 +59,7 @@ useEffect(() => {
           );
         } else {
           // If adding, send POST request
-        const response = await axios.post("http://localhost:5001/api/exercises/add-exercise", exerciseData);
+        const response = await axios.post(`${process.env.BACKEND_URL}api/exercises/add-exercise`, exerciseData);
         console.log("Exercise added successfully:",response.data);
 
         setNewExercises((prevNewExercises) => [
@@ -85,7 +85,7 @@ const handleDelete = async (id) => {
     return; 
   }
   try {
-    const response = await axios.delete(`http://localhost:5001/api/exercises/${id}`);
+    const response = await axios.delete(`${process.env.BACKEND_URL}api/exercises/${id}`);
     if (response.status === 200) {
       setNewExercises((prevExercises) =>
         prevExercises.filter((exercise) => exercise._id !== id)

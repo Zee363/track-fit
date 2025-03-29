@@ -9,7 +9,7 @@ const WorkoutPage = () => {
 
   useEffect(() => {
     axios
-    .get("http://localhost:5001/api/exercises")
+    .get(`${process.env.BACKEND_URL}api/exercises`)
     .then((response) => {
       setExercises(response.data);
     })
