@@ -3,14 +3,14 @@ const Workout = require('../models/Workout');
 const mongoose = require("mongoose");
 
 
-// Controller for inserting the initial ata into the database
+// Controller for inserting the initial add into the database
 exports.addAllExercises = async (req, res) => {
-    const exercises = [
-        { "name": "Burpees", "sets": 3, "reps": 10, "duration": "1 minute" },
-        { "name": "Mountain Climbers", "sets": 3, "reps": 20, "duration": "1 minute" },
-        { "name": "Squats", "sets": 4, "reps": 10, "rest": "60 seconds" },
-        { "name": "Push-Ups", "sets": 3, "reps": 15, "rest": "60 seconds" }
-    ];
+    const exercises = {
+        "name": "Burpees", "sets": 3, "reps": 10, "duration": "1 minute", "category": "fullBody",
+         "name": "Mountain Climbers", "sets": 3, "reps": 20, "duration": "1 minute", "category": "fullBody",
+         "name": "Squats", "sets": 4, "reps": 10, "rest": "60 seconds", "category": "fullBody",
+         "name": "Push-Ups", "sets": 3, "reps": 15, "rest": "60 seconds", "category": "fullBody", 
+    };
 
     try {
         // Insert all exercises at once using insertMany
