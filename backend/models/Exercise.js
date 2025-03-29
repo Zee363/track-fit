@@ -21,9 +21,10 @@ const exerciseSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    category: 
+    category: {
     type: String,
     required: true,
+    }
 });
 
 const Exercise = mongoose.model('Exercise', exerciseSchema);
