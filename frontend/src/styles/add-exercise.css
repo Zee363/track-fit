@@ -5,19 +5,19 @@
   border-radius: 8px;
   margin-top: 30px;
   padding-top: 6px;
-  position: relative; /* For absolute positioning of the background image */
-  overflow: hidden; /* Ensure content doesn't spill over */
-  z-index: 1; /* To ensure the content stays on top */
+  position: relative; 
+  overflow: hidden; 
+  z-index: 1; 
 }
 
 body {
   margin: 0;
   padding: 0;
-  height: 100vh; /* Full height of the viewport */
+  height: 100vh; 
   
-  background-size: cover; /* Make the image cover the entire viewport */
-  background-position: center; /* Center the image */
-  background-attachment: fixed; /* Keep the image fixed when scrolling */
+  background-size: cover;
+  background-position: center; 
+  background-attachment: fixed; 
   background-repeat: no-repeat;
 }
 
@@ -33,7 +33,7 @@ body {
   }
   
   .add-exercise-form label {
-    color: #fff; /* Ensure labels are visible */
+    color: #fff; 
   }
   
   .add-exercise-form input {
@@ -41,14 +41,14 @@ body {
     margin-bottom: 1rem;
     border-radius: 5px;
     border: 1px solid #d8aa76c9;
-    background: rgba(43, 39, 39, 0.137); /* Lighter transparent background for fading effect */
-    color: #f0e6e6; /* Text color for readability */
-    backdrop-filter: blur(5px); /* Adds a blur effect to the background behind the input */
+    background: rgba(43, 39, 39, 0.137); 
+    color: #f0e6e6; 
+    backdrop-filter: blur(5px); 
   }
   
   .add-exercise-form input:focus {
     outline: none;
-    border-color: #aa5885d0; /* Highlight the border when focused */
+    border-color: #aa5885d0;
   }
   
   .add-button {

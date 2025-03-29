@@ -24,12 +24,12 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px; /* Reduced gap between items */
+  gap: 15px; 
 }
 
 .exercise-category {
-  flex: 1 1 20%; /* Smaller boxes by reducing width */
-  min-width: 200px; /* Adjusted for smaller boxes */
+  flex: 1 1 20%; 
+  min-width: 200px; 
   background-color: #8d87875e;
   border-radius: 12px;
   padding: 1rem;
@@ -43,7 +43,7 @@ h2 {
 }
 
 .exercise-category h3 {
-  font-size: 1.2rem; /* Reduced font size */
+  font-size: 1.2rem; 
   color: #444;
   margin-bottom: 10px;
 }
@@ -51,13 +51,13 @@ h2 {
 .category-exercises {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Reduced gap between exercise items */
+  gap: 10px; 
 }
 
 .exercise-block {
   background-image: url('https://media1.popsugar-assets.com/files/thumbor/GIECAu8-qFqbHXtmRpk6UONXQTc=/fit-in/792x1188/filters:format_auto():upscale()/2022/03/30/813/n/46902964/4200d33da202f151_pexels-karolina-grabowska-4397840.jpg');
   border-radius: 8px;
-  padding: 0.8rem; /* Reduced padding */
+  padding: 0.8rem; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   text-align: center;
@@ -78,21 +78,21 @@ h2 {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  margin-bottom: 8px; /* Reduced margin */
+  margin-bottom: 8px; 
 }
 
 .exercise-block h4 {
-  font-size: 1rem; /* Reduced font size */
+  font-size: 1rem; 
   color: #333;
-  margin-bottom: 5px; /* Reduced margin */
+  margin-bottom: 5px;
 }
 
 .exercise-block p {
-  font-size: 0.9rem; /* Smaller text for description */
+  font-size: 0.9rem; 
   color: #666;
 }
 
-/* Optional: Add hover effect on exercise items */
+
 .exercise-block.selected h4 {
   color: #fff;
 }
